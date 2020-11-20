@@ -28,17 +28,15 @@ function setup() {
 
 function draw() {  
   background("green")
-  if(foodS!==undefined){
+ //if(foodS!==undefined){
     textSize(20)
     fill(255)
     text("Note: Press UP ARROW to feed DRAGO milk",50,50)
     text("Food Remaining: "+foodS,150,150)
-    if(ketWentUp(UP_ARROW)){
-      dog.addImage(dogImg)
-    }
-   
-  }
-
+  //}
+ // if(ketWentUp(UP_ARROW)){
+  //  dog.addImage(dogImg)
+ // }
 
   if(keyWentDown(UP_ARROW)){
   writeStock(foodS)
@@ -46,14 +44,17 @@ function draw() {
   }
 
  
-  if(foodS ===0){
-    foodS = 20
-  }
-  readStock()
-  writeStock()
+ // if(foodS ===0){
+//    foodS = 20
+ // }
+ // readStock()
+ // writeStock()
   drawSprites();
   //add styles here
   
+}
+function readStock(data){
+  foodS = data.val();
 }
 function writeStock(x){
   if(x<=0)
@@ -66,7 +67,5 @@ database.ref("/").update({
   Food:x
 })
 }
-function readStock(data){
-  foodS = data.val();
-}
+
 
